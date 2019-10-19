@@ -31,6 +31,9 @@ class NewMigration extends AbstractMigration
      */
     public function change()
     {
-
+        $table = $this -> table('test');
+        $table  -> addColumn('name', 'string', ['limit' => 50])
+                -> addColumn('birthDate', 'date', ['null' => true])
+                -> create();
     }
 }
