@@ -31,6 +31,10 @@ class PlaceTypeMigration extends AbstractMigration
      */
     public function change()
     {                    
+        $table = $this -> table('places_types')
+                -> addColumn('place_type', 'string', ['limit' => 50]) 
+                -> addIndex(['place_type'], ['unique' => true, 'name' => 'place_type_reference'])
+                -> save();
         $refTable = $this -> table('place');
         $refTable -> addColumn('place_name', 'string', ['limit' => 50])
                   -> addColumn('place_address', 'string', ['limit' => 50])
@@ -38,8 +42,9 @@ class PlaceTypeMigration extends AbstractMigration
                   -> addColumn('place_price', 'integer')
                   -> addColumn('place_open', 'time')
                   -> addColumn('place_close', 'time')
-                  -> addColumn('place_type', 'string', ['limit' => 50])
-                  -> create();
+                  -> addColumn('place_type_ref', 'string', ['null' => true, 'limit' => 50])
+                  -> addForeignKey('place_type_ref', 'places_types', 'place_type', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+                  -> save();
     }
    
 }
