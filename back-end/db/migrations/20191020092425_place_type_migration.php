@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class NewMigration extends AbstractMigration
+class PlaceTypeMigration extends AbstractMigration
 {
     /**
      * Change Method.
@@ -30,10 +30,16 @@ class NewMigration extends AbstractMigration
      * with the Table class.
      */
     public function change()
-    {
-        $table = $this -> table('test');
-        $table  -> addColumn('name', 'string', ['limit' => 50])
-                -> addColumn('birthDate', 'date', ['null' => true])
-                -> create();
+    {                    
+        $refTable = $this -> table('place');
+        $refTable -> addColumn('place_name', 'string', ['limit' => 50])
+                  -> addColumn('place_address', 'string', ['limit' => 50])
+                  -> addColumn('place_region', 'string', ['limit' => 50])
+                  -> addColumn('place_price', 'integer')
+                  -> addColumn('place_open', 'time')
+                  -> addColumn('place_close', 'time')
+                  -> addColumn('place_type', 'string', ['limit' => 50])
+                  -> create();
     }
+   
 }
