@@ -29,8 +29,8 @@ class SeedPlace extends AbstractSeed
                 'place_address'     => $faker ->address,
                 'place_region'      => $faker ->city,
                 'place_price'       => $faker ->numberBetween($min = 100000, $max = 500000),
-                'place_open'        => $faker ->time($format = 'H:i:s', $max = '12:00:00'),
-                'place_close'       => $faker ->time($format = 'H:i:s', $max = '24:00:00'),
+                'place_open'        => $faker ->time($format = 'H:i:s'),
+                'place_close'       => $faker ->time($format = 'H:i:s'),
                 'place_type'        => $type[random_int(0, 14)],
             ];
         }
