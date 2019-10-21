@@ -18,6 +18,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Phinx\\' => array($vendorDir . '/robmorgan/phinx/src/Phinx'),
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Cake\\Utility\\' => array($vendorDir . '/cakephp/utility'),
     'Cake\\Log\\' => array($vendorDir . '/cakephp/log'),
     'Cake\\Datasource\\' => array($vendorDir . '/cakephp/datasource'),
