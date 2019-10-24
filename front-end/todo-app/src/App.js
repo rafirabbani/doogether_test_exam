@@ -7,30 +7,20 @@ import uuid from 'uuid';
 
 class App extends Component {
   state = {
-    id: uuid(),
     tasks: [],
-    task: "",
-    completeTask: false
   };
-  handleChange = (e) => {
-    this.setState({
-      task: e.target.value
-    })
-  };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const newTask= {
-      id: this.state.id,
-      value: this.state.task
 
+  inputTask = (value) => {
+    
+    const newTask= {
+      id: uuid(),
+      value: value,
+      completed: false
     }
 
     const updatedTasks = [...this.state.tasks, newTask]
     this.setState({
-      tasks: updatedTasks,
-      task: "",
-      id: uuid(),
-      completeTask: false
+      tasks: updatedTasks
     })
   };
 
@@ -39,9 +29,20 @@ class App extends Component {
       task.id !== id)
       this.setState({
         tasks: filteredTasks
-      })
+        
+      });
   }
 
+  handleComplete = (id) => {
+    const completeTasks = this.state.tasks.map(task =>{
+      if(task.id === id)
+        task.completed = !task.completed;
+        return task;
+    })
+    this.setState({
+      tasks: completeTasks
+    });
+  }
   render () {
     return (
       <div className="container">
@@ -51,13 +52,13 @@ class App extends Component {
             to do app
           </h3>
           <TodoInput  
-            task={this.state.task} 
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
+            inputTask={this.inputTask}
+            handleComplete={this.handleComplete}
           />
             <TodoList 
             tasks={this.state.tasks}
             handleDelete={this.handleDelete}
+            handleComplete={this.handleComplete}
             />
           </div>
         </div>
