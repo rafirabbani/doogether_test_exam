@@ -53,7 +53,6 @@ class App extends Component {
           </h3>
           <TodoInput  
             inputTask={this.inputTask}
-            handleComplete={this.handleComplete}
           />
             <TodoList 
             tasks={this.state.tasks}
