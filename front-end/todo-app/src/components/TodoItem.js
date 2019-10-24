@@ -9,7 +9,7 @@ export default class TodoItem extends Component {
         const {completed} = this.props.task;
         return (
             <li className={
-                completed ? "list-group-item text-capitalize d-flex justify-content-between my-1 bg-primary" 
+                completed ? "list-group-item text-capitalize d-flex justify-content-between my-1 bg-primary text-white" 
                 : "list-group-item text-capitalize d-flex justify-content-between my-1"}>
                 <h6>
                 {this.props.value}
